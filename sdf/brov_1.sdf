@@ -1,0 +1,851 @@
+<?xml version="1.0" ?>
+<sdf version='1.6'>
+    <model name="brov_1">
+      <static>0</static>
+      <!--<pose>1.24377475442 0.439233509258 -10.0 0.0 0.0 0.0</pose>-->
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="brov_1/base_link">
+        <pose frame="">0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>5</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>5</iyy>
+            <iyz>0</iyz>
+            <izz>5</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/base_link_collision">
+          <pose frame="">-0.2415 -0.165 -0.178 1.57079 7e-06 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/ju/catkin_ws/src/single_brov_description/meshes/brov_redux.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="brov_1/base_link_visual">
+          <pose frame="">-0.2415 -0.165 -0.178 1.57079 7e-06 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/ju/catkin_ws/src/single_brov_description/meshes/brov_redux.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <link name="brov_1/ned_link">
+        <pose frame="">0 0 0 3.14159 -0 0</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>1.7e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.7e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.7e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/ned_link_collision">
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="brov_1/ned_link_visual">
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="ned_joint" type="revolute">
+        <child>brov_1/ned_link</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/camera_link">
+        <pose frame="">0.17 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>1e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-05</iyy>
+            <iyz>0</iyz>
+            <izz>1e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/camera_link_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="brov_1/camera_link_visual">
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.1 0.1 0.1</scale>
+              <uri>file:///home/ju/catkin_ws/src/uuv_simulator/uuv_sensor_plugins/uuv_sensor_ros_plugins/meshes/oe14-372.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <sensor name="camera" type="camera">
+          <update_rate>30</update_rate>
+          <camera name="camera">
+            <horizontal_fov>1.5125</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>3000</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.02</stddev>
+            </noise>
+          </camera>
+          <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <updateRate>30</updateRate>
+            <cameraName>camera</cameraName>
+            <frameName>camera_link_optical</frameName>
+            <attenuationR>0.0</attenuationR>
+            <attenuationG>0.0</attenuationG>
+            <attenuationB>0.0</attenuationB>
+            <backgroundR>0</backgroundR>
+            <backgroundG>0</backgroundG>
+            <backgroundB>0</backgroundB>
+            <imageTopicName>image</imageTopicName>
+            <pointCloudTopicName>camera_cloud</pointCloudTopicName>
+            <depthImageTopicName>camera_depth</depthImageTopicName>
+            <depthImageCameraInfoTopicName>camera_depth_info</depthImageCameraInfoTopicName>
+            <pointCloudCutoff>10.0</pointCloudCutoff>
+            <robotNamespace>/brov_1/</robotNamespace>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/camera_joint" type="revolute">
+        <child>brov_1/camera_link</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/camera_link_optical">
+        <pose frame="">0 0 0 -1.57079 -0 -1.57079</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>1.66667e-12</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.66667e-12</iyy>
+            <iyz>0</iyz>
+            <izz>1.66667e-12</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/camera_link_optical_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/camera_optical_joint" type="revolute">
+        <child>brov_1/camera_link_optical</child>
+        <parent>brov_1/camera_link</parent>
+        <axis>
+          <xyz>1e-06 -1 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+     <link name='brov_1/pressure_link'>
+        <pose frame=''>-0.17 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>1e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-05</iyy>
+            <iyz>0</iyz>
+            <izz>1e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='brov_1/pressure_link_collision'>
+          <pose frame=''>0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='brov_1/pressure_link_visual'>
+          <pose frame=''>0 0 0 0 -1.57079 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.1 0.1 0.1</scale>
+              <uri>file:///home/ju/catkin_ws/src/uuv_simulator/uuv_sensor_plugins/uuv_sensor_ros_plugins/meshes/pressure.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay/>
+      </link>
+      <joint name='brov_1/pressure_joint' type='revolute'>
+        <child>brov_1/pressure_link</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_0">
+        <pose frame="">0.175 0.115 0 3.14159 1.57079 3.14159</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_0_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_0_joint" type="revolute">
+        <child>brov_1/thruster_0</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1e-06 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_1">
+        <pose frame="">0.175 -0.115 0 3.14159 1.57079 3.14159</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_1_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_1_joint" type="revolute">
+        <child>brov_1/thruster_1</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1e-06 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_2">
+        <pose frame="">0 0.115 0 3.14159 3e-06 3.14159</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_2_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_2_joint" type="revolute">
+        <child>brov_1/thruster_2</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>-1 0 -3e-06</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_3">
+        <pose frame="">0 -0.115 0 3.14159 3e-06 3.14159</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_3_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_3_joint" type="revolute">
+        <child>brov_1/thruster_3</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>-1 0 -3e-06</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_4">
+        <pose frame="">-0.175 0 -0.1 3.14159 1.57079 3.14159</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_4_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_4_joint" type="revolute">
+        <child>brov_1/thruster_4</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1e-06 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name="brov_1/thruster_5">
+        <pose frame="">0.05 0 -0.12 0 0 -1.57079</pose>
+        <inertial>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name="brov_1/thruster_5_collision">
+          <pose frame="">0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>1e-06</length>
+              <radius>1e-06</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name="brov_1/thruster_5_joint" type="revolute">
+        <child>brov_1/thruster_5</child>
+        <parent>brov_1/base_link</parent>
+        <axis>
+          <xyz>1e-06 -1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <plugin name="brov_1_uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+        <fluid_density>1028</fluid_density>
+        <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+        <debug>0</debug>
+        <link name="brov_1/base_link">
+          <neutrally_buoyant>0</neutrally_buoyant>
+          <volume>0.005</volume>
+          <box>
+            <width>0.1</width>
+            <length>0.5</length>
+            <height>0.1</height>
+          </box>
+          <center_of_buoyancy>0 0 0.05</center_of_buoyancy>
+          <hydrodynamic_model>
+            <type>fossen</type>
+            <added_mass>2 0 0 0 0 0 0 2 0 0 0 0 0 0 2 0 0 0 0 0 0 2 0 0 0 0 0 0 2 0 0 0 0 0 0 2</added_mass>
+            <linear_damping>-5 -5 -5 -1 -1 -1</linear_damping>
+            <quadratic_damping>-5 -5 -5 -1 -1 -1</quadratic_damping>
+          </hydrodynamic_model>
+        </link>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_0_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_0</linkName>
+        <jointName>brov_1/thruster_0_joint</jointName>
+        <thrusterID>0</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_1_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_1</linkName>
+        <jointName>brov_1/thruster_1_joint</jointName>
+        <thrusterID>1</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_2_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_2</linkName>
+        <jointName>brov_1/thruster_2_joint</jointName>
+        <thrusterID>2</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_3_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_3</linkName>
+        <jointName>brov_1/thruster_3_joint</jointName>
+        <thrusterID>3</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_4_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_4</linkName>
+        <jointName>brov_1/thruster_4_joint</jointName>
+        <thrusterID>4</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+      <plugin name="brov_1_thruster_5_model" filename="libuuv_thruster_ros_plugin.so">
+        <linkName>brov_1/thruster_5</linkName>
+        <jointName>brov_1/thruster_5_joint</jointName>
+        <thrusterID>5</thrusterID>
+        <dynamics>
+          <type>FirstOrder</type>
+          <timeConstant>0.05</timeConstant>
+        </dynamics>
+        <conversion>
+          <type>Basic</type>
+          <rotorConstant>0.00031</rotorConstant>
+        </conversion>
+        <robotNamespace>/brov_1/</robotNamespace>
+      </plugin>
+
+
+      <plugin name='libuuv_gazebo_subseapressure_plugin' filename='libuuv_gazebo_ros_subsea_pressure_plugin.so'>
+        <enable_gazebo_messages>false</enable_gazebo_messages>
+        <robot_namespace>brov_1</robot_namespace>
+        <link_name>brov_1/pressure_link</link_name>
+        <sensor_topic>pressure</sensor_topic>
+        <update_period>0.02</update_period>
+        <range>30000</range>
+        <stddev>0.0</stddev>
+        <estimate_depth>false</estimate_depth>
+        <standard_pressure>101.325</standard_pressure>
+        <kPa_Per_M>9.80638</kPa_Per_M>
+      </plugin>
+
+
+
+      <plugin filename="libuuv_gazebo_ros_imu_plugin.so" name="brov_1_imu_">
+        <enable_gazebo_messages>false</enable_gazebo_messages>
+        <robot_namespace>brov_1</robot_namespace>
+        <link_name>brov_1/base_link</link_name>
+        <sensor_topic>brov_1/imu</sensor_topic>
+        <update_period>0.02</update_period>
+      </plugin>
+
+
+      <plugin name="pose_3d_plugin" filename="libgazebo_ros_p3d.so">
+        <robotNamespace>brov_1</robotNamespace>
+        <bodyName>brov_1/base_link</bodyName>
+        <topicName>pose_gt</topicName>
+        <frameName>world</frameName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <updateRate>30</updateRate>
+      </plugin>
+
+      <plugin name="joint_state_publisher" filename="libuuv_joint_state_publisher.so">
+        <robotNamespace>brov_1</robotNamespace>
+        <updateRate>50</updateRate>
+      </plugin>
+    </model>
+</sdf>
